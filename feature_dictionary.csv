@@ -1,0 +1,56 @@
+feature,level,category,description
+chg_is_charge_phase,phase,charging,1 if charge segment (CC/CV)
+chg_is_CC,phase,charging,1 if CC
+chg_is_CV,phase,charging,1 if CV
+chg_dur_s,phase,charging,duration of charge segment
+chg_energy_Wh,phase,charging,energy in charge segment (Wh)
+chg_cc_dur_s,phase,charging,CC segment duration
+chg_cv_dur_s,phase,charging,CV segment duration
+chg_cv_energy_Wh,phase,charging,CV segment energy (Wh)
+chg_mean_C_rate,phase,charging,mean C-rate in charge segment
+chg_max_C_rate,phase,charging,max C-rate in charge segment
+chg_ic_centroid_V,phase,charging,IC centroid during charge (V)
+chg_ic_spread_V,phase,charging,IC spread during charge (V)
+chg_ic_p1_V,phase,charging,IC top peak location (V) during charge
+chg_ic_p1_h,phase,charging,IC top peak height during charge
+chg_vi_R_ohm,phase,charging,V–I slope (approx R) during charge
+dis_is_flight_phase,phase,discharge,1 if flight segment (TO/Cruise/Landing)
+dis_dur_s,phase,discharge,duration of flight segment
+dis_energy_Wh_abs,phase,discharge,|energy| in flight segment (Wh)
+dis_mean_C_rate,phase,discharge,mean C-rate in flight segment
+dis_max_C_rate,phase,discharge,max C-rate in flight segment
+dis_ic_centroid_V,phase,discharge,IC centroid during discharge (V)
+dis_ic_spread_V,phase,discharge,IC spread during discharge (V)
+dis_ic_p1_V,phase,discharge,IC top peak location (V) during discharge
+dis_ic_p1_h,phase,discharge,IC top peak height during discharge
+dis_vi_R_ohm,phase,discharge,V–I slope (approx R) during discharge
+dis_dSOC,phase,discharge,observed ΔSOC in segment (%)
+dis_dSOC_baseline,phase,discharge,physics ΔSOC baseline (%)
+temp_mean_C,phase,temperature,mean temperature (°C)
+temp_max_C,phase,temperature,max temperature (°C)
+temp_thermal_slope,phase,temperature,(Tmax - Tmean)/duration (K/s)
+temp_thermal_gain,phase,temperature,thermal_slope / |P| (K/W)
+chg_total_dur_s,mission,charging,total charge duration
+chg_cc_dur_s,mission,charging,total CC duration
+chg_cv_dur_s,mission,charging,total CV duration
+chg_energy_Wh,mission,charging,total charge energy (Wh)
+chg_cv_energy_Wh,mission,charging,total CV energy (Wh)
+chg_cv_fraction,mission,charging,CV/(CC+CV)
+cv_setpoint_V,mission,charging,per-cell CV setpoint (V)
+chg_cv_mean_I_A_proxy,mission,charging,CV mean current proxy (A)
+chg_cum_Wh,mission,charging,cumulative charge energy (Wh)
+dis_total_dur_s,mission,discharge,total flight duration
+dis_flight_Wh_abs,mission,discharge,total |flight| energy (Wh)
+dis_mean_C_rate_med,mission,discharge,median of mean C-rate across flight segments
+dis_max_C_rate_p90,mission,discharge,P90 of max C-rate across flight segments
+dis_vi_R_ohm_med,mission,discharge,median V–I slope (R) in flight
+dis_vi_R_ohm_p90,mission,discharge,P90 of V–I slope (R) in flight
+dis_dSOC_sum,mission,discharge,sum of ΔSOC across flight segments (%)
+dis_dSOC_baseline_sum,mission,discharge,sum of baseline ΔSOC across flight (%)
+dis_cum_Wh,mission,discharge,cumulative |flight| energy (Wh)
+temp_mean_C_med,mission,temperature,median segment mean T (°C)
+temp_max_C_max,mission,temperature,maximum segment max T (°C)
+temp_th_gain_med,mission,temperature,median thermal gain (K/W)
+temp_th_gain_max,mission,temperature,max thermal gain (K/W)
+SOH_mission_end_pct,mission,context,SOH at end of mission (%)
+RUL_med,mission,context,median mission RUL label (missions)
