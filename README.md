@@ -5,7 +5,7 @@
 
 
 **What is this?** An end-to-end, **mission-phase-aware** ML pipeline for lithium-ion **prognostics in eVTOL duty cycles**.  
-We engineer >50 phase/mission features from the CMU eVTOL dataset and train both tree ensembles and sequence models (LSTM/GRU/BiLSTM/TCN/TFT, plus **Attention-LSTM-MoE**). We enforce **physical consistency** via a **monotone-RUL** penalty and **post-hoc isotonic calibration** across **EOL thresholds (90/85/80%)**.
+We engineer >50 phase/mission features from the CMU eVTOL dataset and train both tree ensembles and sequence models (LSTM/GRU/BiLSTM/TCN/TFT, plus **Attention-LSTM-MoE**). We enforce **physical consistency** via a **monotone-RUL** penalty and **post-hoc isotonic calibration** across state of health **EOL thresholds (90/85/80%)** of the initial battery capacity.
 
 **Headline (draft)**: Attention-guided sequence models (Temporal Fusion Transformers, Attn-LSTM-MoE) deliver **lowest MAE** and best calibration for RUL@{80,85,90} across mission profile cells; tree models struggle on sequence RUL despite doing fine on SOH.
 
