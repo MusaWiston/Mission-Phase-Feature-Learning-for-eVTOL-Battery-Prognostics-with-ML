@@ -1,4 +1,4 @@
-# Mission-Phase Feature Learning for eVTOL Battery Prognostics (SOC, SOH, RUL)
+# Mission-Phase Feature Learning for eVTOL Battery Prognostics (SOC, SOH, RUL) using ML algorithms
 [![Data: CMU eVTOL (CC-BY-4.0)](https://img.shields.io/badge/Data-CMU%20eVTOL-6f42c1.svg)](https://kilthub.cmu.edu/articles/dataset/eVTOL_Battery_Dataset/14226830)
 
 
