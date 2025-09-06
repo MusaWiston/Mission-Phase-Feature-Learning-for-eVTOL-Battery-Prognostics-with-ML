@@ -19,56 +19,19 @@ Dataset DOI: `10.1184/R1/14226830.v2`  •  Paper: Scientific Data 10:344 (2023)
 ---
 
 ## 2) Repository structure
-.
-├─ README.md
-├─ LICENSE
-├─ CITATION.cff                 # How to cite this repo (shown by GitHub) 
-├─ pyproject.toml / requirements.txt
-├─ Makefile                     # make data | make fe | make train | make eval | make figs
-├─ configs/                     # YAML configs for experiments
-│  ├─ train_rul.yaml
-│  └─ train_soh.yaml
-├─ src/evtol_prognosis/         # Installable package (import evtol_prognosis)
-│  ├─ __init__.py
-│  ├─ utils.py                  # formerly battery_common.py
-│  ├─ features/
-│  │  ├─ phase_labeling.py      # phase labeling logic
-│  │  └─ feature_engineering.py # feature extraction (>50 features)
-│  ├─ models/
-│  │  ├─ attn_lstm.py
-│  │  ├─ attn_lstm_moe.py
-│  │  └─ baseline_trees.py      # LightGBM / CatBoost / XGBoost wrappers
-│  ├─ training/
-│  │  ├─ datamodule.py          # loaders, T_max, k-window
-│  │  └─ train.py               # common training loop + LOCO CV
-│  └─ evaluation/
-│     ├─ metrics.py             # MAE, RMSE, calibration utils
-│     └─ plots.py               # RUL@80/85/90, SOH heatmaps, ablations
-├─ scripts/                     # CLI entry points (thin wrappers around src/)
-│  ├─ download_cmu_evtol.py     # prints CC-BY-4.0 notice and fetches data
-│  ├─ preprocess.py             # raw → interim (cleaning, fixes)
-│  ├─ extract_features.py       # interim → processed features
-│  ├─ train_baselines.py
-│  ├─ train_attn_lstm_moe.py
-│  └─ evaluate.py
-├─ data/                        # (tracked via DVC or LFS; gitignored)
-│  ├─ raw/                      # original CMU eVTOL CSVs + impedance
-│  ├─ interim/                  # cleaned/validated
-│  └─ processed/                # per-cycle & mission-level features, splits
-├─ notebooks/
-│  ├─ 01_eda.ipynb
-│  ├─ 02_feature_checks.ipynb
-│  └─ 03_results_figures.ipynb
-├─ results/
-│  ├─ metrics/                  # CSVs for tables
-│  ├─ figs/                     # paper-ready figures
-│  └─ tables/                   # LaTeX tables
-├─ docs/
-│  ├─ data_schema.md            # raw column glossary; impedance headers
-│  ├─ feature_dictionary.md     # derived feature definitions (from CSV)
-│  └─ api.md                    # brief API for src/ (public functions)
-└─ .github/workflows/
-   └─ ci.yml                    # lint, unit tests, smoke train (fast)
+├── Attn_lstm.py # Attention-LSTM algorithm (LOCO driver)
+├── Attn_lstm_MoE.py # Proposed Attention-LSTM + Mixture-of-Experts, isotonic calibration
+├── sequential_baseline.py # GRU / BiLSTM / TCN / TFT agorithms under LOCO
+├── baseline_tress.py # (Trees) RF, XGBoost, CatBoost, LightGBM under LOCO
+├── battery_common.py # Shared config, dataset builders, sequences, metrics, plotting
+├── metrics_helper.py # MAPE + event-based EOL timing error helpers
+├── plot_moe_insights.py # Attention heatmaps, gate usage, reliability, latency, etc.
+├── feature_dictionary.csv # Glossary of derived features (phase + mission levels)
+├── mission_features.csv # Mission-level features per cell-mission
+├── phase_features.csv # Phase-level features per cell-mission-segment
+├── per_cycle_summary_allcells.csv # (optional) summary export
+├── Baseline_mission_profiles.zip / phase_features.rar / eda.zip 
+└── README.md
 
 
 ## 3) Quickstart Guidelines
@@ -82,6 +45,32 @@ cd Mission-Phase-Feature-Learning-for-eVTOL-Battery-Prognostics-with-ML
 python -m venv .venv && source .venv/bin/activate  # (Windows: .venv\Scripts\activate)
 python -m pip install --upgrade pip
 pip install -r requirements.txt   # (provide this file; see "Setup" below)
+# ---- Core ----
+numpy>=1.26
+pandas>=2.2
+scipy>=1.11
+scikit-learn>=1.7
+
+# ---- Gradient-boosted trees ----
+xgboost>=2.1
+lightgbm>=4.6
+catboost>=1.2
+
+# ---- Sequence models (PyTorch backend) ----
+torch>=2.3,<2.5
+einops>=0.7
+
+# ---- Plotting & utilities ----
+matplotlib>=3.8
+seaborn>=0.13
+tqdm>=4.66
+pyyaml>=6.0
+joblib>=1.3
+
+# ---- Optional: notebooks ----
+# jupyterlab>=4.1
+# ipykernel>=6.29
+
 
 # 2) Download dataset (CC-BY-4.0)
 #   - Manually from KiltHub (link below), or add a helper script here to fetch VAH**.csv files.
