@@ -5,7 +5,7 @@
 
 
 **What is this?** An end-to-end, **mission-phase-aware** ML pipeline for lithium-ion **prognostics in eVTOL duty cycles**.  
-We engineer >50 phase/mission features from the CMU eVTOL dataset and train both tree ensembles and sequence models (LSTM/GRU/BiLSTM/TCN/TFT, plus **Attention-LSTM-MoE**). We enforce **physical consistency** via a **monotone-RUL** penalty and **post-hoc isotonic calibration** across state of health **EOL thresholds (90/85/80%)** of the initial battery capacity.
+engineered >50 phase/mission features from the CMU eVTOL dataset and train both tree ensembles and sequence models (LSTM/GRU/BiLSTM/TCN/TFT, plus **Attention-LSTM-MoE**). the enforced **physical consistency** via a **monotone-RUL** penalty and **post-hoc isotonic calibration** across state of health **EOL thresholds (90/85/80%)** of the initial battery capacity.
 
 **Headline (draft)**: Attention-guided sequence models (Temporal Fusion Transformers, Attn-LSTM-MoE) deliver **lowest MAE** and best calibration for RUL@{80,85,90} across mission profile cells; tree models struggle on sequence RUL despite doing fine on SOH.
 
@@ -15,7 +15,7 @@ We engineer >50 phase/mission features from the CMU eVTOL dataset and train both
 
 eVTOL missions demand **high power at takeoff/landing** with no rest during flight, stressing cells thermo-electrically. Mission-aware prognostics are required to plan maintenance, derate missions, and enforce safety margins across **multiple EOL thresholds** (early-warning at 90%, serviceability at 85%, end-of-service at 80%).  
 
-**Data**: I use the **CMU eVTOL Battery Dataset** (22 Sony-Murata VTC6 cells; ~21k cycles) — a widely cited benchmark for eVTOL duty cycles.  
+**Data**:**CMU eVTOL Battery Dataset** (22 Sony-Murata VTC6 cells; ~21k cycles) — a widely cited benchmark for eVTOL duty cycles.  
 Dataset DOI: `10.1184/R1/14226830.v2`  •  Paper: Scientific Data 10:344 (2023)
 
 ---
