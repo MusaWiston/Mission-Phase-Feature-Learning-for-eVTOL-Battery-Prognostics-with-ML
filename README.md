@@ -7,7 +7,7 @@
 **What is this?** An end-to-end, **mission-phase-aware** ML pipeline for lithium-ion **prognostics in eVTOL duty cycles**.  
 We engineer >50 phase/mission features from the CMU eVTOL dataset and train both tree ensembles and sequence models (LSTM/GRU/BiLSTM/TCN/TFT, plus **Attention-LSTM-MoE**). We enforce **physical consistency** via a **monotone-RUL** penalty and **post-hoc isotonic calibration** across **EOL thresholds (90/85/80%)**.
 
-**Headline (draft)**: Attention-guided sequence models (TFT, Attn-LSTM-MoE) deliver **lowest MAE** and best calibration for RUL@{80,85,90} across cells; tree models struggle on sequence RUL despite doing fine on SOH.
+**Headline (draft)**: Attention-guided sequence models (Temporal Fusion Transformers, Attn-LSTM-MoE) deliver **lowest MAE** and best calibration for RUL@{80,85,90} across mission profile cells; tree models struggle on sequence RUL despite doing fine on SOH.
 
 ---
 
@@ -46,7 +46,7 @@ cd Mission-Phase-Feature-Learning-for-eVTOL-Battery-Prognostics-with-ML
 # 1) Create environment
 python -m venv .venv && source .venv/bin/activate  # (Windows: .venv\Scripts\activate)
 python -m pip install --upgrade pip
-pip install -r requirements.txt   # (provide this file; see "Setup" below)
+pip install -r requirements.txt   # (see "Setup" below)
 # ---- Core ----
 numpy>=1.26
 pandas>=2.2
