@@ -19,12 +19,59 @@ Dataset DOI: `10.1184/R1/14226830.v2`  •  Paper: Scientific Data 10:344 (2023)
 ---
 
 ## 2) Repository structure
+.
+├─ README.md
+├─ LICENSE
+├─ CITATION.cff                 # How to cite this repo (shown by GitHub) 
+├─ pyproject.toml / requirements.txt
+├─ Makefile                     # make data | make fe | make train | make eval | make figs
+├─ configs/                     # YAML configs for experiments
+│  ├─ train_rul.yaml
+│  └─ train_soh.yaml
+├─ src/evtol_prognosis/         # Installable package (import evtol_prognosis)
+│  ├─ __init__.py
+│  ├─ utils.py                  # formerly battery_common.py
+│  ├─ features/
+│  │  ├─ phase_labeling.py      # phase labeling logic
+│  │  └─ feature_engineering.py # feature extraction (>50 features)
+│  ├─ models/
+│  │  ├─ attn_lstm.py
+│  │  ├─ attn_lstm_moe.py
+│  │  └─ baseline_trees.py      # LightGBM / CatBoost / XGBoost wrappers
+│  ├─ training/
+│  │  ├─ datamodule.py          # loaders, T_max, k-window
+│  │  └─ train.py               # common training loop + LOCO CV
+│  └─ evaluation/
+│     ├─ metrics.py             # MAE, RMSE, calibration utils
+│     └─ plots.py               # RUL@80/85/90, SOH heatmaps, ablations
+├─ scripts/                     # CLI entry points (thin wrappers around src/)
+│  ├─ download_cmu_evtol.py     # prints CC-BY-4.0 notice and fetches data
+│  ├─ preprocess.py             # raw → interim (cleaning, fixes)
+│  ├─ extract_features.py       # interim → processed features
+│  ├─ train_baselines.py
+│  ├─ train_attn_lstm_moe.py
+│  └─ evaluate.py
+├─ data/                        # (tracked via DVC or LFS; gitignored)
+│  ├─ raw/                      # original CMU eVTOL CSVs + impedance
+│  ├─ interim/                  # cleaned/validated
+│  └─ processed/                # per-cycle & mission-level features, splits
+├─ notebooks/
+│  ├─ 01_eda.ipynb
+│  ├─ 02_feature_checks.ipynb
+│  └─ 03_results_figures.ipynb
+├─ results/
+│  ├─ metrics/                  # CSVs for tables
+│  ├─ figs/                     # paper-ready figures
+│  └─ tables/                   # LaTeX tables
+├─ docs/
+│  ├─ data_schema.md            # raw column glossary; impedance headers
+│  ├─ feature_dictionary.md     # derived feature definitions (from CSV)
+│  └─ api.md                    # brief API for src/ (public functions)
+└─ .github/workflows/
+   └─ ci.yml                    # lint, unit tests, smoke train (fast)
 
-> Heads-up: Move large `.zip/.rar` assets to **Releases** or **Git LFS** to keep the repo lightweight.
 
----
-
-## 3) Quickstart 
+## 3) Quickstart Guidelines
 
 ```bash
 # 0) Clone
@@ -37,7 +84,7 @@ python -m pip install --upgrade pip
 pip install -r requirements.txt   # (provide this file; see "Setup" below)
 
 # 2) Download dataset (CC-BY-4.0)
-#   - Manually from KiltHub (link below), or add a helper script here to fetch VAH**.csv and impedance files.
+#   - Manually from KiltHub (link below), or add a helper script here to fetch VAH**.csv files.
 
 # 3) Preprocess + feature engineering
 python "Phase labeling Stage.py" --data /path/to/raw_csv
@@ -48,7 +95,7 @@ python sequential_baseline.py --task SOH --cv LOCO
 python baseline_tress.py --task RUL --eol 80 --cv LOCO
 
 # 5) Train Attn-LSTM(-MoE) sequences
-python Attn_lstm.py --task RUL --eol all --tmax 16 --k_window 5
+python Attn_lstm.py --task RUL --EOL all --tmax 16 --k_window 5
 python Attn_lstm_MoE.py --task RUL --eol all --experts 2 --topk 2 --lambda_mono 0.02
 
 # 6) Evaluate + plots
