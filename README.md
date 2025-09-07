@@ -75,7 +75,7 @@ joblib>=1.3
 
 
 # 2) Download dataset (CC-BY-4.0)
-#   - Manually from KiltHub (link below), or add a helper script here to fetch VAH**.csv files.
+#   - Manually from KiltHub (https://kilthub.cmu.edu/articles/dataset/eVTOL_Battery_Dataset/14226830)
 
 # 3) Preprocess + feature engineering
 python "Phase labeling Stage.py" --data /path/to/raw_csv
