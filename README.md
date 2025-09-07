@@ -92,4 +92,18 @@ python Attn_lstm_MoE.py --task RUL --eol all --experts 2 --topk 2 --lambda_mono 
 # 6) Evaluate + plots
 python sequential_baseline.py --eval --dump ./results
 
+### Mission Profile (CC–CV charge & eVTOL flight phases)
+<p align="center">
+  <img src="assets/figures/recreated_cc_cv_white_bg.png" alt="CC–CV profile with eVTOL phases (take-off, cruise, landing, rest) over time" width="900">
+</p>
+
+### Mission- vs Phase-level Feature Importance
+<p align="center">
+  <img src="assets/figures/combined_mission_phase_feature_importance_heatmap_grayscale_friendly_UPDATED.png" alt="Binary importance matrix comparing mission-level and phase-level features" width="900">
+</p>
+
+### True vs Predicted RUL (80% / 85% / 90% EoL) across Models
+<p align="center">
+  <img src="assets/figures/rul_true_vs_pred_HORIZONTAL_ALL.png" alt="Scatter plots with fit lines and 95% CI for RUL prediction across multiple models and EoL thresholds" width="1000">
+</p>
 
