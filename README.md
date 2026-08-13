@@ -179,8 +179,7 @@ legacy phase table, but that does not validate the original target pipeline.
 The corrected raw pipeline uses C/5 RPT discharge capacity, reconstructs
 contiguous cycle instances instead of globally grouping repeated tester
 counters, does not extrapolate SOH, and does not convert censored endpoints
-into observed failures. Consequently, all SOC, SOH, and RUL metrics and
-manuscript tables require a clean rerun. See
+into observed failures. Consequently, all SOC, SOH, and RUL metrics require a clean rerun. See
 `docs/reproducibility.md` for the artifact provenance.
 
 ## Quickstart Guidelines
