@@ -37,67 +37,12 @@ Dataset DOI: `10.1184/R1/14226830.v2`  •  Paper: Scientific Data 10:344 (2023)
 
 # UPDATE
 
-# Mission-Phase Feature Learning for eVTOL Battery Prognostics
-
-This repository contains a mission-phase-aware pipeline for estimating state of
-charge (SOC), state of health (SOH), and remaining useful life (RUL) from the
-public CMU eVTOL battery dataset. It includes tree baselines, recurrent and
-attention-based sequence models, an Attention-LSTM mixture-of-experts model,
-and multi-threshold RUL evaluation at 90%, 85%, and 80% SOH.
-
-## Repository status
-
-- `scripts/build_reproducible_pipeline.py` is the canonical raw-data entry
-  point. It reconstructs repeated tester counters, detects full C/5 RPTs,
-  builds explicit SOH/RUL targets with censoring, creates leak-free sliding
-  windows, and writes a checksum manifest.
-- The exact algorithm and supplementary pseudocode are documented in
-  `docs/preprocessing_and_targets.md`; all thresholds are versioned in
-  `config/pipeline.json`.
-- The mission-level aggregation is now defined once in
-  `evt_battery/features.py` and covered by automated tests.
-- `scripts/rebuild_mission_features.py` reproduces the checked-in
-  `mission_features.csv` from the archived `phase_features.csv` to numerical
-  tolerance.
-- Raw-data stages accept command-line paths; no source edit or Windows drive
-  path is required.
-- SOH/RUL builders exclude VAH06, VAH07, and VAH09 by default, matching the
-  manuscript protocol. Set `BATTERY_HEALTH_EXCLUDE=""` to include all cells.
-- CI compiles every Python source and tests feature formulas, aggregation, and
-  segment-local elapsed-time handling.
-
-## Data
-
-Download version 2 of the [CMU eVTOL Battery Dataset](https://kilthub.cmu.edu/articles/dataset/eVTOL_Battery_Dataset/14226830)
-(DOI `10.1184/R1/14226830.v2`) and place the raw `VAH*.csv` files in a local
-directory. Do not commit the raw dataset.
-
-The repository also contains these derived artifacts:
-
-- `phase_features.rar`: archived phase-level table;
-- `mission_features.csv`: mission-level table;
-- `per_cycle_summary_allcells.csv`: per-cycle diagnostic summary;
-- `feature_dictionary.csv`: model feature definitions.
-
-## Environment
-
-The tested workflow uses Python 3.11.
-
-```bash
-python -m venv .venv
-source .venv/bin/activate          # Windows: .venv\Scripts\activate
-python -m pip install --upgrade pip
-python -m pip install -r requirements.txt
-```
-
 For feature-table verification and CI only, the smaller dependency set is
 sufficient:
 
 ```bash
 python -m pip install -r requirements-ci.txt
 ```
-
-## Verify the published mission table
 
 First extract `phase_features.rar` so that `phase_features.csv` is available.
 Then run:
@@ -137,9 +82,6 @@ and `manifest.json` with the resolved configuration and SHA-256 provenance.
 Use `--write-cleaned-telemetry` only when the large canonical row-level files
 are needed. See [the complete procedural specification](docs/preprocessing_and_targets.md).
 
-The older stage-named scripts remain for legacy artifact diagnosis. They are
-not the canonical path for regenerating manuscript results.
-
 ## Run the models
 
 Point the model loaders at the directory containing the new
@@ -174,13 +116,10 @@ python -m unittest discover -s tests -v
 
 ## Important reproducibility note
 
-`mission_features.csv` in the repository is reproducible from the archived
-legacy phase table, but that does not validate the original target pipeline.
 The corrected raw pipeline uses C/5 RPT discharge capacity, reconstructs
 contiguous cycle instances instead of globally grouping repeated tester
 counters, does not extrapolate SOH, and does not convert censored endpoints
-into observed failures. Consequently, all SOC, SOH, and RUL metrics require a clean rerun. See
-`docs/reproducibility.md` for the artifact provenance.
+into observed failures..See `docs/reproducibility.md` for the artifact provenance.
 
 ## Quickstart Guidelines
 
