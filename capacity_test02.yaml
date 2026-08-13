@@ -1,0 +1,40 @@
+# All thresholds are explicit and written into run_manifest.json.
+input_glob: "VAH*.csv"
+excluded_cells: ["VAH06", "VAH07", "VAH09"]
+
+columns:
+  cell: null                 # inferred from filename when null
+  cycle: ["Cycle_Index", "cycle_index", "Cycle", "cycle"]
+  time: ["Test_Time(s)", "test_time_s", "Time", "time_s"]
+  step: ["Step_Index", "step_index", "Step", "step"]
+  phase: ["Protocol", "protocol", "Phase", "phase", "Step_Type", "step_type"]
+  current: ["Current(A)", "current_a", "Current", "current"]
+  voltage: ["Voltage(V)", "voltage_v", "Voltage", "voltage"]
+  charge_capacity: ["Charge_Capacity(Ah)", "charge_capacity_ah", "Charge Capacity (Ah)"]
+  discharge_capacity: ["Discharge_Capacity(Ah)", "discharge_capacity_ah", "Discharge Capacity (Ah)"]
+
+detection:
+  # Positive current is assumed to mean charge. Use -1 for opposite-sign files.
+  charge_current_sign: 1
+  current_deadband_a: 0.02
+  full_charge_voltage_v: 4.15
+  full_charge_min_fraction: 0.98
+  full_charge_tail_points: 3
+  min_charge_rows: 10
+  min_discharge_rows: 10
+  min_capacity_ah: 1.0
+  max_capacity_ah: 4.0
+  require_charge_then_discharge: true
+  require_flight_label: true
+  charge_phase_regex: "charge|cc|cv"
+  flight_phase_regex: "take.?off|cruise|landing|flight|discharge"
+
+labels:
+  capacity_aggregation: "max"       
+  interpolation: "linear_inside"    # never extrapolate beyond diagnostic tests
+  enforce_nonincreasing_soh: false   # diagnostic only; do not hide recovery
+  thresholds: [0.90, 0.85, 0.80]
+  mission_sequence_length: 20
+  soh_horizon_missions: 5
+  minimum_tests_per_cell: 2
+
