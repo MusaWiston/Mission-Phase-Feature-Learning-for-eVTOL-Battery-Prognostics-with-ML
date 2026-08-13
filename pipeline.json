@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "preprocessing": {
+    "rest_current_a": 0.05,
+    "max_sample_gap_s": 60.0,
+    "flight_phase_codes": [4, 5, 6],
+    "phase_names": {
+      "0": "CC",
+      "1": "CV",
+      "2": "CV-to-Rest",
+      "3": "Rest-to-Take-off",
+      "4": "Take-off",
+      "5": "Cruise",
+      "6": "Landing",
+      "7": "Landing-to-Rest",
+      "8": "Rest1 (post-landing)",
+      "9": "Rest2 (pre-charge)"
+    }
+  },
+  "capacity_test": {
+    "nominal_capacity_ah": 3.0,
+    "reference_discharge_c_rate": 0.2,
+    "current_relative_tolerance": 0.35,
+    "minimum_reference_current_time_fraction": 0.7,
+    "minimum_start_voltage_v": 4.1,
+    "maximum_end_voltage_v": 2.55,
+    "minimum_voltage_span_v": 1.4,
+    "minimum_capacity_fraction": 0.5,
+    "maximum_capacity_fraction": 1.25,
+    "minimum_discharge_duration_s": 7200.0,
+    "expected_spacing_missions": 50,
+    "spacing_tolerance_missions": 5
+  },
+  "targets": {
+    "soh_horizon_missions": 5,
+    "rul_thresholds_pct": [90.0, 85.0, 80.0],
+    "excluded_health_cells": ["VAH06", "VAH07", "VAH09"],
+    "interpolation": "linear_between_rpts",
+    "extrapolation": "none"
+  },
+  "windows": {
+    "soc_max_steps": 16,
+    "mission_max_steps": 20,
+    "minimum_steps": 1,
+    "stride": 1
+  },
+  "cv_setpoints_v": {
+    "VAH07": 4.0,
+    "VAH23": 4.1
+  },
+  "default_cv_setpoint_v": 4.2
+}
