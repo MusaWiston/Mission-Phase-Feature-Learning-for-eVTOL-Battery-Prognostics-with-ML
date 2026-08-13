@@ -76,12 +76,6 @@ python scripts/build_reproducible_pipeline.py \
   --config config/pipeline.json
 ```
 
-The command is fail-fast by default and writes cycle/RPT audits, separate
-feature and target tables, padded sequence samples, deterministic LOCO roles,
-and `manifest.json` with the resolved configuration and SHA-256 provenance.
-Use `--write-cleaned-telemetry` only when the large canonical row-level files
-are needed. See [the complete procedural specification](docs/preprocessing_and_targets.md).
-
 ## Run the models
 
 Point the model loaders at the directory containing the new
@@ -100,12 +94,6 @@ python sequential_baseline.py \
 python Attn_lstm.py
 python Attn_lstm_MoE.py
 ```
-
-The generated `samples/*.npz` files contain unscaled values, masks, lengths,
-targets, sample IDs, and the exact predictor list. `loco_folds.csv` identifies
-training, validation, and held-out cells. Median imputation and standardisation
-must be fitted only on each outer fold's training cells and then applied
-unchanged to validation and test cells; `FoldStandardizer` implements this.
 
 ## Tests
 
