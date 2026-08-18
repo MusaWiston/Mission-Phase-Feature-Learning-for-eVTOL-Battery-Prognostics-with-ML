@@ -1,0 +1,50 @@
+[
+  {
+    "task": "soh",
+    "model": "mission_phase_transformer",
+    "cells": 19,
+    "n": 18513,
+    "mae": 1.2518956661224365,
+    "rmse": 2.1110854148864746,
+    "macro_mae": 1.2446015461495048,
+    "p90_cell_mae": 2.1024393558502195,
+    "worst_cell_mae": 4.306987762451172,
+    "features": [
+      "chg_total_dur_s",
+      "chg_energy_Wh",
+      "chg_mean_I_A",
+      "chg_mean_C_rate",
+      "chg_cc_dur_s",
+      "chg_cc_energy_Wh",
+      "chg_cv_dur_s",
+      "chg_cv_energy_Wh",
+      "chg_cv_fraction",
+      "cv_setpoint_V",
+      "dis_total_dur_s",
+      "dis_flight_Wh_abs",
+      "dis_mean_C_rate",
+      "dis_max_C_rate",
+      "dis_vi_R_ohm_med",
+      "temp_mean_C",
+      "temp_max_C_max",
+      "gap_count",
+      "chg_cum_Wh",
+      "dis_cum_Wh"
+    ],
+    "history": 20,
+    "seed": 1337,
+    "inner_validation": "three sample-balanced cell folds; fold 0 validation",
+    "training": {
+      "optimizer": "Adam",
+      "learning_rate": 0.002,
+      "weight_decay": 0.0001,
+      "batch_size": 64,
+      "max_epochs": 60,
+      "early_stopping_patience": 8,
+      "loss": "SmoothL1 beta=1",
+      "moe_load_balance_weight": 0.02,
+      "gradient_clip": 1.0,
+      "target_transform": "training-cell mean/std; inverted before scoring"
+    }
+  }
+]
