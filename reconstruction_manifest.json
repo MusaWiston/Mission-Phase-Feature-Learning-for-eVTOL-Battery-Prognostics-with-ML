@@ -1,0 +1,287 @@
+{
+  "protocol": {
+    "cycle_instance": "raw cycle change or backward time",
+    "phase_runs": "contiguous Ns runs",
+    "max_valid_dt_s": 60,
+    "rpt": {
+      "c5_abs_current_A": [
+        0.39,
+        0.81
+      ],
+      "minimum_fraction": 0.7,
+      "start_voltage_min_V": 4.1,
+      "end_or_min_voltage_max_V": 2.55,
+      "minimum_span_V": 1.4,
+      "capacity_Ah": [
+        1.5,
+        3.75
+      ],
+      "minimum_duration_s": 7200
+    },
+    "excluded_health_cells": [
+      "VAH06",
+      "VAH07",
+      "VAH09"
+    ],
+    "SOH_target": "absolute unsmoothed SOH at mission m+5",
+    "RUL": "observed crossings only; event row retained; post-event rows excluded"
+  },
+  "counts": {
+    "raw_cells": 22,
+    "missions_all_cells": 20857,
+    "valid_rpts_all_cells": 441,
+    "health_cells": 19,
+    "health_supported_rows": 18608,
+    "soh_m_plus_5_rows": 18513,
+    "rul90_rows": 5814,
+    "rul85_rows": 9595,
+    "rul80_rows": 8257,
+    "rul90_cells": 19,
+    "rul85_cells": 16,
+    "rul80_cells": 8
+  },
+  "files": [
+    {
+      "cell_id": "VAH01",
+      "path": "rerun_repo/data/raw/VAH01.csv",
+      "sha256": "596ab1e1e80eeac3509f789609f751527c2073a4310deec8274cbfaf4fef39c4",
+      "rows": 1091477,
+      "cycle_instances": 845,
+      "missions": 829,
+      "valid_rpts": 18,
+      "q0_ah": 3.089338074917116,
+      "health_excluded": false
+    },
+    {
+      "cell_id": "VAH02",
+      "path": "rerun_repo/data/raw/VAH02.csv",
+      "sha256": "63ae338dfa26bcde8b497b6511e4202396efe3de0dcdf9011af602b38307dbbe",
+      "rows": 1004761,
+      "cycle_instances": 623,
+      "missions": 611,
+      "valid_rpts": 14,
+      "q0_ah": 3.104819696380228,
+      "health_excluded": false
+    },
+    {
+      "cell_id": "VAH05",
+      "path": "rerun_repo/data/raw/VAH05.csv",
+      "sha256": "55f31eb9877a62e1e7da7aded95b76bc6ab4190fda2ae8e86b05e6a5a0ed2cb3",
+      "rows": 1015444,
+      "cycle_instances": 2715,
+      "missions": 1516,
+      "valid_rpts": 30,
+      "q0_ah": 3.0332231501594253,
+      "health_excluded": false
+    },
+    {
+      "cell_id": "VAH06",
+      "path": "rerun_repo/data/raw/VAH06.csv",
+      "sha256": "1fc8df685aaa783b416286fb04bd0425bcb11d32b3a5d8f977e1f018543bf75d",
+      "rows": 809016,
+      "cycle_instances": 23538,
+      "missions": 942,
+      "valid_rpts": 20,
+      "q0_ah": 3.0399639863901875,
+      "health_excluded": true
+    },
+    {
+      "cell_id": "VAH07",
+      "path": "rerun_repo/data/raw/VAH07.csv",
+      "sha256": "895bbfe543ac7ad1adb1eed4d03c392d0bc460d382acc6a40198c33149360223",
+      "rows": 205487,
+      "cycle_instances": 2008,
+      "missions": 268,
+      "valid_rpts": 6,
+      "q0_ah": 3.0337919463498486,
+      "health_excluded": true
+    },
+    {
+      "cell_id": "VAH09",
+      "path": "rerun_repo/data/raw/VAH09.csv",
+      "sha256": "4bd91ff22fe8d417270455ca300dc03de83a061f3fef08cfd3f0ffbb942d8e26",
+      "rows": 680849,
+      "cycle_instances": 22052,
+      "missions": 785,
+      "valid_rpts": 23,
+      "q0_ah": 3.0360571809199906,
+      "health_excluded": true
+    },
+    {
+      "cell_id": "VAH10",
+      "path": "rerun_repo/data/raw/VAH10.csv",
+      "sha256": "d6d2604ddbe2771cb8cecfa6be62c5fce6271b0ee9d02e8eeec92cf7985bc3cd",
+      "rows": 949302,
+      "cycle_instances": 1430,
+      "missions": 1400,
+      "valid_rpts": 29,
+      "q0_ah": 3.085544386274244,
+      "health_excluded": false
+    },
+    {
+      "cell_id": "VAH11",
+      "path": "rerun_repo/data/raw/VAH11.csv",
+      "sha256": "03e6d90e11d20f1759f9dc7ea6922598cae078c5c556f9d6f7438f8f38e50c76",
+      "rows": 1381245,
+      "cycle_instances": 2246,
+      "missions": 2203,
+      "valid_rpts": 44,
+      "q0_ah": 3.0495072342600564,
+      "health_excluded": false
+    },
+    {
+      "cell_id": "VAH12",
+      "path": "rerun_repo/data/raw/VAH12.csv",
+      "sha256": "783d39c0ced88d93c885e7b78d834a45e2cea121662ea24bb425b10c3ef7c041",
+      "rows": 1331202,
+      "cycle_instances": 2347,
+      "missions": 2302,
+      "valid_rpts": 47,
+      "q0_ah": 3.0607956576919007,
+      "health_excluded": false
+    },
+    {
+      "cell_id": "VAH13",
+      "path": "rerun_repo/data/raw/VAH13.csv",
+      "sha256": "02e6ae71d83ae35a7a7059fa46ba322524178182ae8bed739ddf773b3821967b",
+      "rows": 647633,
+      "cycle_instances": 1040,
+      "missions": 1020,
+      "valid_rpts": 21,
+      "q0_ah": 3.045314107763656,
+      "health_excluded": false
+    },
+    {
+      "cell_id": "VAH15",
+      "path": "rerun_repo/data/raw/VAH15.csv",
+      "sha256": "7c49b75c9f87bad48e172ebde9172a4649be7063705d2ddc32a629a697d6922e",
+      "rows": 365851,
+      "cycle_instances": 552,
+      "missions": 542,
+      "valid_rpts": 11,
+      "q0_ah": 3.1248159936961,
+      "health_excluded": false
+    },
+    {
+      "cell_id": "VAH16",
+      "path": "rerun_repo/data/raw/VAH16.csv",
+      "sha256": "cef4d10ae9f4103379d5ec4f5c8c6541f9a4d647fc338f489a5deb6582679f4d",
+      "rows": 343414,
+      "cycle_instances": 557,
+      "missions": 547,
+      "valid_rpts": 11,
+      "q0_ah": 3.138379189417175,
+      "health_excluded": false
+    },
+    {
+      "cell_id": "VAH17",
+      "path": "rerun_repo/data/raw/VAH17.csv",
+      "sha256": "a20cf42e2a58eed8dff3a1d54816012c043664dbf4cfdcee61bf86bd5048b4d8",
+      "rows": 650381,
+      "cycle_instances": 1000,
+      "missions": 981,
+      "valid_rpts": 21,
+      "q0_ah": 3.111978799649982,
+      "health_excluded": false
+    },
+    {
+      "cell_id": "VAH20",
+      "path": "rerun_repo/data/raw/VAH20.csv",
+      "sha256": "2ee40fb5654ccc3d8aaec3b7892a1c48d9fd6a3f435b8781e173668d42a1b3e5",
+      "rows": 392502,
+      "cycle_instances": 609,
+      "missions": 598,
+      "valid_rpts": 13,
+      "q0_ah": 3.1396684168267255,
+      "health_excluded": false
+    },
+    {
+      "cell_id": "VAH22",
+      "path": "rerun_repo/data/raw/VAH22.csv",
+      "sha256": "17c464c724b9a259566576ed6b6c8147425351802b6380d96df326c5e7955a1f",
+      "rows": 385429,
+      "cycle_instances": 1948,
+      "missions": 540,
+      "valid_rpts": 11,
+      "q0_ah": 3.1256391997648634,
+      "health_excluded": false
+    },
+    {
+      "cell_id": "VAH23",
+      "path": "rerun_repo/data/raw/VAH23.csv",
+      "sha256": "3b08dbbd5403c379f9a557c66a5a84faeda35f7a39243de609c0e9fe39f1b608",
+      "rows": 528761,
+      "cycle_instances": 695,
+      "missions": 682,
+      "valid_rpts": 15,
+      "q0_ah": 3.0212994274902143,
+      "health_excluded": false
+    },
+    {
+      "cell_id": "VAH24",
+      "path": "rerun_repo/data/raw/VAH24.csv",
+      "sha256": "b89449330d73c876bbde158754f42e80cdc2bfa84cd90c6607e9352e230c8da5",
+      "rows": 653075,
+      "cycle_instances": 799,
+      "missions": 784,
+      "valid_rpts": 17,
+      "q0_ah": 3.049638268538597,
+      "health_excluded": false
+    },
+    {
+      "cell_id": "VAH25",
+      "path": "rerun_repo/data/raw/VAH25.csv",
+      "sha256": "739fe3d4cac8993aec437cda08b941c217cffb118081da463c0b31d085c49412",
+      "rows": 401297,
+      "cycle_instances": 550,
+      "missions": 541,
+      "valid_rpts": 10,
+      "q0_ah": 3.0270177164165544,
+      "health_excluded": false
+    },
+    {
+      "cell_id": "VAH26",
+      "path": "rerun_repo/data/raw/VAH26.csv",
+      "sha256": "1e6ecd99821a1e110e67650b2c6475e3fcb4fac0e798842d1689d0fb4bd09c0c",
+      "rows": 718345,
+      "cycle_instances": 1160,
+      "missions": 1138,
+      "valid_rpts": 24,
+      "q0_ah": 3.052757816953366,
+      "health_excluded": false
+    },
+    {
+      "cell_id": "VAH27",
+      "path": "rerun_repo/data/raw/VAH27.csv",
+      "sha256": "c9a2fcdb18a6265cd5b2e0ccba8afc7d5a4051e6bf56590340834df2304a137f",
+      "rows": 391649,
+      "cycle_instances": 583,
+      "missions": 573,
+      "valid_rpts": 13,
+      "q0_ah": 3.1206748140666902,
+      "health_excluded": false
+    },
+    {
+      "cell_id": "VAH28",
+      "path": "rerun_repo/data/raw/VAH28.csv",
+      "sha256": "64e6917005a6e769177089beaedd44a9a0f43339042fab5a23b58d5640c7aa28",
+      "rows": 770958,
+      "cycle_instances": 1177,
+      "missions": 1155,
+      "valid_rpts": 24,
+      "q0_ah": 3.020375264007909,
+      "health_excluded": false
+    },
+    {
+      "cell_id": "VAH30",
+      "path": "rerun_repo/data/raw/VAH30.csv",
+      "sha256": "a37ed0e32a52aa165369b58a0cdad6155bf36f153e433b12f9a34b2b8bef07c8",
+      "rows": 591239,
+      "cycle_instances": 916,
+      "missions": 900,
+      "valid_rpts": 19,
+      "q0_ah": 3.138294708115297,
+      "health_excluded": false
+    }
+  ]
+}
