@@ -9,6 +9,7 @@ Engineered >50 phase/mission features from the CMU eVTOL dataset and train both 
 
 **Headline (draft)**: Attention-guided sequence models (Temporal Fusion Transformers, Attn-LSTM-MoE) deliver **lowest MAE** and best calibration for RUL@{80,85,90} across mission profile cells; tree models struggle on sequence RUL despite doing fine on SOH estimations.
 
+Article Citation: Yan, S.; Wiston, M. Mission-Phase Feature Learning for eVTOL Li-Ion Battery Prognostics: A Leakage-Safe Cell-Held-Out Benchmark for SOC, SOH, and RUL. Batteries 2026, 12, 322. https://doi.org/10.3390/batteries12090322
 ---
 
 ## 1) Why eVTOL battery prognostics?
